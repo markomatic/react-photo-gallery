@@ -14,7 +14,8 @@
     "url": "https://github.com/neptunian/react-photo-gallery/issues"
   },
   "dependencies": {
-    "react-images": "^0.4.6"
+    "react-images": "^0.4.6",
+    "lazyimage": "git+https://github.com/markomatic/LazyImage.git"
   },
   "devDependencies": {
     "babel": "^5.8.21",
