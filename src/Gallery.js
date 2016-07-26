@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Lightbox from 'react-images';
-import LazyImage from 'lazyimage';
+import ProgressiveImage from 'react-progressive-image';
 
 class Gallery extends React.Component {
     constructor() {
@@ -98,24 +98,26 @@ class Gallery extends React.Component {
                 }
 
                 let imgProps = {
-                    src: this.props.photos[k].src,
+                    highUrl: this.props.photos[k].src,
                     style: {
                         display: 'block',
                         border: 0
                     },
                     height: commonHeight,
-                    width: commonHeight * this.props.photos[k].aspectRatio,
-                    alt: ''
+                    width: commonHeight * this.props.photos[k].aspectRatio
                 };
 
-                const lowSrc = this.props.photos[k].placeholderSrc;
-                if (lowSrc) {
-                    imgProps = Object.assign({}, imgProps, {
-                        low: lowSrc
+                const placeholder = this.props.photos[k].placeholder;
+                if (placeholder) {
+                    placeholder.src && Object.assign(imgProps, {
+                        lowUrl: placeholder.src
+                    });
+                    placeholder.renderOverlay && Object.assign(imgProps, {
+                        renderOverlay: placeholder.renderOverlay
                     });
                 }
 
-                let imageComponent = <LazyImage {...imgProps} />;
+                let imageComponent = <ProgressiveImage {...imgProps} />;
 
                 if (!this.props.disableLightbox) {
                     lightboxImages.push(this.props.photos[k].lightboxImage);

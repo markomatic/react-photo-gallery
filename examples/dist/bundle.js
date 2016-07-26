@@ -29,9 +29,9 @@ var _reactImages = require('react-images');
 
 var _reactImages2 = _interopRequireDefault(_reactImages);
 
-var _lazyimage = require('lazyimage');
+var _reactProgressiveImage = require('react-progressive-image');
 
-var _lazyimage2 = _interopRequireDefault(_lazyimage);
+var _reactProgressiveImage2 = _interopRequireDefault(_reactProgressiveImage);
 
 var Gallery = (function (_React$Component) {
     _inherits(Gallery, _React$Component);
@@ -142,24 +142,26 @@ var Gallery = (function (_React$Component) {
                     }
 
                     var imgProps = {
-                        src: this.props.photos[k].src,
+                        highUrl: this.props.photos[k].src,
                         style: {
                             display: 'block',
                             border: 0
                         },
                         height: commonHeight,
-                        width: commonHeight * this.props.photos[k].aspectRatio,
-                        alt: ''
+                        width: commonHeight * this.props.photos[k].aspectRatio
                     };
 
-                    var lowSrc = this.props.photos[k].placeholderSrc;
-                    if (lowSrc) {
-                        imgProps = _extends({}, imgProps, {
-                            low: lowSrc
+                    var placeholder = this.props.photos[k].placeholder;
+                    if (placeholder) {
+                        placeholder.src && _extends(imgProps, {
+                            lowUrl: placeholder.src
+                        });
+                        placeholder.renderOverlay && _extends(imgProps, {
+                            renderOverlay: placeholder.renderOverlay
                         });
                     }
 
-                    var imageComponent = _react2['default'].createElement(_lazyimage2['default'], imgProps);
+                    var imageComponent = _react2['default'].createElement(_reactProgressiveImage2['default'], imgProps);
 
                     if (!this.props.disableLightbox) {
                         lightboxImages.push(this.props.photos[k].lightboxImage);
@@ -252,4 +254,4 @@ var style = {
 exports['default'] = Gallery;
 module.exports = exports['default'];
 
-},{"lazyimage":undefined,"react":undefined,"react-dom":undefined,"react-images":undefined}]},{},[]);
+},{"react":undefined,"react-dom":undefined,"react-images":undefined,"react-progressive-image":undefined}]},{},[]);

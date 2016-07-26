@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "react-images": "^0.4.6",
-    "lazyimage": "git+https://github.com/markomatic/LazyImage.git"
+    "react-progressive-image": "git+https://github.com/markomatic/react-progressive-image.git"
   },
   "devDependencies": {
     "babel": "^5.8.21",
