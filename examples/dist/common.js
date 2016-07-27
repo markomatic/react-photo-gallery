@@ -4121,18 +4121,15 @@ var ImageUrlSource = function (_Component) {
             var width = _props.width;
             var height = _props.height;
 
+
             var componentStyle = {
                 padding: 0,
                 margin: 0,
-                top: 0
+                top: 0,
+                width: width + 'px',
+                height: height + 'px'
             };
 
-            width && _extends(componentStyle, {
-                width: width + 'px'
-            });
-            height && _extends(componentStyle, {
-                height: height + 'px'
-            });
             style && _extends(componentStyle, style);
 
             return _react2.default.createElement(
@@ -4156,6 +4153,7 @@ var ImageUrlSource = function (_Component) {
             var canvas = this.canvas;
             var image = this.image;
 
+
             if (!canvas || !image) {
                 return;
             }
@@ -4166,10 +4164,11 @@ var ImageUrlSource = function (_Component) {
             var height = _props2.height;
             var blurAlphaChannel = _props2.blurAlphaChannel;
 
+
             _stackblurCanvas2.default.image(image, canvas, radius, blurAlphaChannel);
 
-            width && (canvas.style.width = width + 'px');
-            height && (canvas.style.height = height + 'px');
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
         }
     }, {
         key: 'onImageLoad',
@@ -4184,6 +4183,7 @@ var ImageUrlSource = function (_Component) {
 }(_react.Component);
 
 exports.default = ImageUrlSource;
+
 
 ImageUrlSource.propTypes = {
     imageUrl: _react2.default.PropTypes.string,
@@ -23723,18 +23723,15 @@ var ProgressiveImage = function (_Component) {
             var blurRadius = _props.blurRadius;
             var renderOverlay = _props.renderOverlay;
 
+
             var componentStyle = {
                 padding: 0,
                 margin: 0,
-                top: 0
+                top: 0,
+                width: width + 'px',
+                height: height + 'px'
             };
 
-            width && _extends(componentStyle, {
-                width: width + 'px'
-            });
-            height && _extends(componentStyle, {
-                height: height + 'px'
-            });
             style && _extends(componentStyle, style);
 
             var highImageStyle = _extends({}, componentStyle);
@@ -23773,6 +23770,7 @@ var ProgressiveImage = function (_Component) {
 }(_react.Component);
 
 exports.default = ProgressiveImage;
+
 
 ProgressiveImage.propTypes = {
     lowUrl: _react2.default.PropTypes.string,
